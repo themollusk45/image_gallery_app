@@ -1,5 +1,12 @@
-<% provide(:title, 'Home') %>
-<h1>Mugen gallery</h1>
-<p>
-	This is the homepage for Mugen gallery, part of my portfolio to get rich and conquer Earth.
-</p>
+
+<div class="center hero-unit">
+	<h1> Welcome to Mugen Gallery</h1>
+
+	<h2>
+		This is the homepage for Mugen gallery, part of my portfolio to get rich and conquer Earth.
+	</h2>
+
+	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+</div>
+
+<%= link_to image_tag("mugen.png", alt: "Public Gallery"), '#' %>
