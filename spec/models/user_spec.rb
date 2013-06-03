@@ -28,6 +28,8 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:galleries) }
+  it { should respond_to(:feed) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -126,5 +128,39 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "gallery associations" do
+
+    before { @user.save }
+    let!(:older_gallery) do
+      FactoryGirl.create(:gallery, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_gallery)do
+      FactoryGirl.create(:gallery, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right gallery in the right order" do
+      @user.galleries.should == [newer_gallery, older_gallery]
+    end
+
+    it "should destroy associated galleries" do
+      galleries = @user.galleries.dup
+      @user.destroy
+      galleries.should_not be_empty
+      galleries.each do |gallery|
+        Gallery.find_by_id(gallery.id).should be_nil
+      end
+    end
+
+    describe "status" do
+      let(:unfollowed_gallery) do
+        FactoryGirl.create(:gallery, user: FactoryGirl.create(:user))
+      end
+
+      its(:feed) { should include(newer_gallery) }
+      its(:feed) { should include(older_gallery) }
+      #its(:feed) { should_not include(unfollowed_gallery) }  # do for part B
+    end
   end
 end

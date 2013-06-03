@@ -1,0 +1,8 @@
+<%= form_for(@gallery) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<div class="field">
+		<%= f.text_area :title, placeholder: "Title of new gallery" %>
+		<%= f.text_area :description, placeholder: "Description of new gallery" %>
+	</div>
+	<%= f.submit "Create gallery", class: "btn btn-large btn-primary" %>
+<% end %>

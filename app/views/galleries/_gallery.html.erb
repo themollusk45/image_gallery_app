@@ -1,0 +1,12 @@
+<li>
+	<span class="gallerytitle"><a href = #><%= gallery.title %></a></span>
+	<span class="gallerydescription"><%= gallery.description %></span>
+	<span class="timestamp">
+		Posted <%= time_ago_in_words(gallery.created_at) %> ago.
+	</span>
+	<% if current_user?(gallery.user) %>
+		<%= link_to "delete", gallery, method: :delete,
+										data: { confirm: "You sure?" },
+										title: gallery.title %>
+	<% end %>
+</li>
