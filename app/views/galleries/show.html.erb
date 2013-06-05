@@ -1,0 +1,16 @@
+<% provide(:title, @single_gallery.title) %>
+<div class="row">
+	<aside class="span4">
+		<section>
+			<h1>
+				<%= gravatar_for @user %>
+				<%= @user.name %>
+			</h1>
+		</section>
+	</aside>
+	<div class="span8">s
+			<div class="gallery">
+				<%= render @single_gallery %>
+			</div>
+	</div>
+</div>

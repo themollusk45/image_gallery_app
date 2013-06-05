@@ -1,0 +1,10 @@
+<% provide(:title, 'All galleries') %>
+<h1>All galleries</h1>
+
+<%= will_paginate %>
+
+<ul class="galleries">
+	<%= render @galleries %>
+</ul>
+
+<%= will_paginate %>
