@@ -4,6 +4,7 @@ class GalleriesController < ApplicationController
 
 	def show #show specific gallery...
 		@user = current_user
+		 @pic = current_user.pics.build if signed_in?
 		@single_gallery = Gallery.find(params[:id])
 	end
 
@@ -31,8 +32,7 @@ class GalleriesController < ApplicationController
 
 	def update
 		if @gallery.update_attributes(params[:gallery])
-	      flash[:success] = "Profile updated"
-	      #sign_in @user
+	      flash[:success] = "Gallery updated"
 	      redirect_to @gallery
 	    else
 	      render 'edit'

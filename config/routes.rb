@@ -2,6 +2,7 @@ ImageGalleryApp::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :galleries #create and destroy via Users, rest via Galleries?
+  resources :pics #need to decide which are needed, which to leave out, prob dont need new, or maybe...
 
   root to: 'static_pages#home'
 

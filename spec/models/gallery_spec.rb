@@ -13,6 +13,7 @@ describe Gallery do
 	it { should respond_to(:user_id) }
 	it { should respond_to(:user) }
 	its(:user) { should == user }
+	#it { should respond_to(:images) }
 
 	it { should be_valid }
 

@@ -34,4 +34,6 @@ ImageGalleryApp::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #Paperclip.options[:command_path] = "k:/Progra~1/ImageMa~1.0-Q"
 end

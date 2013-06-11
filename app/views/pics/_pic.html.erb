@@ -1,0 +1,9 @@
+<div>
+	<span class="title">Title:<%= link_to pic.title, show %></span>
+	<div class="thumbnail">
+		<%= image_tag @pic.pic_file.url(:thumb) %>
+	</div>
+	<div class ="pic_description">
+		<%= @pic.description %>
+	</div>
+</div>

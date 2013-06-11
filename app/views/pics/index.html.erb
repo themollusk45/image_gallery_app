@@ -1,0 +1,31 @@
+<% provide(:title, "all pictures") %>
+<div class="row">
+	<div class="all-pics">
+		<ul class="clearfix">
+			<% @pics.each do |image| %>
+				<li>
+					<%=link_to image_tag(image.pic_file.url(:thumb)), image.pic_file.url, title: image.title, rel:  'lightbox' %>
+				</li>
+			<% end unless @pics.first.new_record? rescue nil %>
+				
+		</ul>
+	</div>
+</div>
+
+<% content_for :lightboxjs do %>
+	<script type="text/javascript">
+	$(function(){
+	  $('a[rel=lightbox]').lightBox({
+	    containerResizeSpeed: 250,
+	    fixedNavigation: true
+	  });
+	  $('a[rel=2ndlightbox]').lightBox({
+	    overlayBgColor: '#fff',
+	    overlayOpacity: 0.7
+	  });
+	});
+	</script>
+<% end %>
+
+
+	

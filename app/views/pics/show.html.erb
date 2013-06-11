@@ -1,0 +1,16 @@
+<% provide(:title, @pic.title) %>
+<div class="row">
+	<div class="span8">
+		<div class="single_pic">
+			<div>
+				<span class="title">Title:<%= link_to @pic.title, @pic %></span>
+				<div "single_image">
+					<%=h image_tag @pic.pic_file.url(:medium) %>
+				</div>
+				<div class="image_description">
+					<%= @pic.description %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

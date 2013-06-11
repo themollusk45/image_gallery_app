@@ -217,9 +217,56 @@ input {
   float: left;
   margin-right: 10px;
 }
+
 aside {
   textarea {
-    height: 100px;
+    height: 40px;
     margin-bottom: 5px;
   }
+}
+
+/* pics */
+ .pic_thumb {
+  margin-bottom: 5px;
+ }
+
+.all-pics {
+  display: block;
+
+  ul { 
+    list-style: none;
+
+    li {
+      display: inline;
+
+      a {
+        display: block;
+        float: left;
+        padding: 5px;
+        margin-right: 10px;
+        margin-bottom: 7px;
+        opacity: 0.69;
+        -webkit-transition: all 0.3s linear;
+        -moz-transition: all 0.3s linear;
+        transition: all 0.3s linear;
+
+        &:hover {
+          opacity: 1.0;
+        }
+
+        img {
+          border: 6px solid #e1d9ec;
+        }
+      }
+    }
+  }
+
+
+}
+
+/* lightbox hacks */
+#lightbox-container-image-data-box {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 }
