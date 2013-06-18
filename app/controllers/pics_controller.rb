@@ -13,18 +13,20 @@ class PicsController < ApplicationController
 
 	def create
 		@user = current_user
+		#@gallery = current_user.galleries.find(params[:id])#Gallery.find(params[:id])
 		@pic = current_user.pics.build(params[:pic])
 		
 		if @pic.save
 			flash[:success] = "Image saved!"
-			redirect_to @pic
+			redirect_to :back
 		else
 			#@feed_items = []
-			render :action => "new"#should go back to upload pics page...
+			redirect_to root_url#render :action => "new"#should go back to upload pics page...
 		end
 	end
 
 	def edit
+		@galleries = current_user.galleries
 	end
 
 	def index#all current users images, is this useful??? will have edit/delete for each so I guess so
@@ -34,9 +36,7 @@ class PicsController < ApplicationController
 	end
 
 	def update
-		@pic = Pic.find(params[:id])
-
-		if @pic.update_attributes(params[:image])
+		if @pic.update_attributes(params[:pic])
 	      flash[:success] = "Image updated"
 	      redirect_to @pic
 	    else
@@ -46,7 +46,7 @@ class PicsController < ApplicationController
 
 	def destroy
 		@pic.destroy
-		redirect_to root_url
+		redirect_to :back
 	end
 
 	

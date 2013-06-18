@@ -4,8 +4,10 @@ class GalleriesController < ApplicationController
 
 	def show #show specific gallery...
 		@user = current_user
-		 @pic = current_user.pics.build if signed_in?
-		@single_gallery = Gallery.find(params[:id])
+		@pic = current_user.pics.build if signed_in?
+		@gallery = Gallery.find(params[:id])
+		@galleries = @user.galleries
+		@pics = @gallery.pics
 	end
 
 	def new
@@ -27,7 +29,8 @@ class GalleriesController < ApplicationController
 	end
 
 	def index
-		@galleries = Gallery.paginate(page: params[:page])
+		@user = current_user
+		@galleries = @user.galleries.paginate(page: params[:page])
 	end
 
 	def update

@@ -1,0 +1,11 @@
+<li class="span">
+	<%=link_to image_tag(pic.pic_file.url(:thumb)), pic.pic_file.url, title: pic.title, rel:  'lightbox' %>
+	<% if current_user?(pic.user) %>
+		<p>
+			<%= link_to "edit", edit_pic_path(pic.id) %>
+			<%= link_to "delete", pic, method: :delete,
+			data: { confirm: "You sure?" },
+			title: pic.title %>
+		</p>
+	<% end %>
+</li>

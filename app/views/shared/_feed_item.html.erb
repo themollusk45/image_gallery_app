@@ -4,7 +4,7 @@
 		<span class="user">
 			<%= link_to feed_item.user.name, feed_item.user %>
 		</span>
-		<span class="gallerytitle"><%= feed_item.title %></span>
+		<span class="gallerytitle"><%= link_to feed_item.title, feed_item %></span>
 		<span class="gallerydescription"><%= feed_item.description %></span>
 		<span class="timestamp">
 			Posted <%= time_ago_in_words(feed_item.created_at) %> ago.

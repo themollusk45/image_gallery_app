@@ -174,6 +174,19 @@ input {
   @extend .error;
 }
 
+aside {
+  select, textarea, input {
+    height: 40px;
+    font-size: .8em;
+    padding: 4px;
+    margin-bottom: 7px;
+  }
+  input {
+    border: none;
+  }
+}
+
+
 /* users index */
 
 .users {
@@ -218,14 +231,8 @@ input {
   margin-right: 10px;
 }
 
-aside {
-  textarea {
-    height: 40px;
-    margin-bottom: 5px;
-  }
-}
-
 /* pics */
+
  .pic_thumb {
   margin-bottom: 5px;
  }
@@ -243,8 +250,8 @@ aside {
         display: block;
         float: left;
         padding: 5px;
-        margin-right: 10px;
-        margin-bottom: 7px;
+        margin-right: 7px;
+        margin-bottom: 3px;
         opacity: 0.69;
         -webkit-transition: all 0.3s linear;
         -moz-transition: all 0.3s linear;
@@ -254,9 +261,19 @@ aside {
           opacity: 1.0;
         }
 
+
+
         img {
           border: 6px solid #e1d9ec;
         }
+      }
+      p { /* this is for edit/delete under thumbnails */
+        a {
+          padding: 2px;
+          margin-right: 2px;
+          
+        }
+
       }
     }
   }
@@ -270,3 +287,4 @@ aside {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
+

@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @gallery = current_user.galleries.build if signed_in?
+    @pic = current_user.pics.build if signed_in?
     @galleries = @user.galleries.paginate(page: params[:page])
   end
   

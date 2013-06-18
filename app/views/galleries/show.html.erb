@@ -1,4 +1,4 @@
-<% provide(:title, @single_gallery.title) %>
+<% provide(:title, @gallery.title) %>
 <div class="row">
 	<aside class="span4">
 		<section>
@@ -6,11 +6,40 @@
 				<%= gravatar_for @user %>
 				<%= @user.name %>
 			</h1>
+			<% if current_user?(@gallery.user) %>
+				<section class="new-pic">
+					<%= render 'shared/pic_form' %>
+				</section>
+			<% end %>
 		</section>
 	</aside>
 	<div class="span8">
-			<div class="gallery">
-				<%= render @single_gallery %>
+		<div class="gallery">
+			<%= render @gallery %>
+		</div>
+		<div class="row">
+			<div class="all-pics">
+				<ul class="clearfix">
+					<%= render partial: 'shared/pic', collection: @pics %>
+				</ul>
 			</div>
+		</div>
 	</div>
+
+	
 </div>
+<% content_for :lightboxjs do %>
+	<script type="text/javascript">
+	$(function(){
+	  $('a[rel=lightbox]').lightBox({
+	    containerResizeSpeed: 250,
+	    fixedNavigation: true
+	  });
+	  $('a[rel=2ndlightbox]').lightBox({
+	    overlayBgColor: '#fff',
+	    overlayOpacity: 0.7
+	  });
+	});
+	</script>
+<% end %>
+

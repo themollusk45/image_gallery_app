@@ -1,7 +1,8 @@
 class Pic < ActiveRecord::Base
   attr_accessible :description, :gallery_id, :title, :pic_file
   
-  belongs_to :user
+  belongs_to :user#should this go away??
+  belongs_to :gallery
 
   validates :user_id, presence: true
   validates :title, length: { maximum: 100 }

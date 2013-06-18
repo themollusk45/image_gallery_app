@@ -2,13 +2,18 @@
 	<%= render 'shared/error_messages', object: f.object %>
 	<div class="field">
 		
-		<%= f.label :title %>
-		<%= f.text_field :title %>
+		<%= f.text_area :title, placeholder: "Title of image" %>
 
-		<%= f.label :description %>
-		<%= f.text_field :description %>
+		<%= f.text_area :description, placeholder: "Description" %>
+		
+		<% if @gallery.id %>
+			<%= f.hidden_field :gallery_id, :value => @gallery.id %>
+			<% @pic.update_attributes(params[gallery_id=@gallery.id]) %>
+		<% else %>
+			<%= f.label "Choose a gallery" %>
+ 			<%= f.collection_select :gallery_id, @galleries, :id, :title, :include_blank => "Nothing selected" %>
+ 		<% end %>
 
-		<%= f.label :pic_file %><br />
 		<%= f.file_field :pic_file %>
 	</div>
 	<%= f.submit "upload image", class: "btn btn-large btn-primary" %>

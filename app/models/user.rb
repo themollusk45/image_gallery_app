@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
   has_many :galleries, dependent: :destroy
-  has_many :pics, dependent: :destroy
+  has_many :pics, dependent: :destroy#should this go away???
 
   #before_save { |user| user.name = name.downcase }
   before_save :create_remember_token
