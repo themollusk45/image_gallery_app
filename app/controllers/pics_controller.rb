@@ -13,15 +13,13 @@ class PicsController < ApplicationController
 
 	def create
 		@user = current_user
-		#@gallery = current_user.galleries.find(params[:id])#Gallery.find(params[:id])
 		@pic = current_user.pics.build(params[:pic])
 		
 		if @pic.save
 			flash[:success] = "Image saved!"
 			redirect_to :back
 		else
-			#@feed_items = []
-			redirect_to root_url#render :action => "new"#should go back to upload pics page...
+			redirect_to :back
 		end
 	end
 
@@ -31,14 +29,13 @@ class PicsController < ApplicationController
 
 	def index#all current users images, is this useful??? will have edit/delete for each so I guess so
 		@user = current_user
-		#@galleries = Gallery.paginate(page: params[:page])#don't really want this...
 		@pics = @user.pics.paginate(page: params[:page])
 	end
 
 	def update
 		if @pic.update_attributes(params[:pic])
 	      flash[:success] = "Image updated"
-	      redirect_to @pic
+	      redirect_to :back
 	    else
 	      render 'edit'
 	    end

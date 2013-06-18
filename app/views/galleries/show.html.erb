@@ -6,6 +6,9 @@
 				<%= gravatar_for @user %>
 				<%= @user.name %>
 			</h1>
+			<span>
+  				<%= pluralize(@gallery.pics.count, "pic") %>
+			</span>
 			<% if current_user?(@gallery.user) %>
 				<section class="new-pic">
 					<%= render 'shared/pic_form' %>

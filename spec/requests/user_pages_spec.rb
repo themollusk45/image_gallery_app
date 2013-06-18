@@ -68,6 +68,24 @@ describe "User pages" do
     end
   end
 
+  describe "gallery page" do
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:g1) { FactoryGirl.create(:gallery, user: user, title: "Foo") }
+    let!(:p1) { FactoryGirl.create(:pic, user: user, title: "foo", description: "bar", gallery: g1) }
+    let!(:p2) { FactoryGirl.create(:pic, user: user, title: "fooo", description: "barr", gallery: g1) }
+
+    before { visit gallery_path(g1) }
+
+    it { should have_selector('h1', text: g1.name) }
+    it { should have_selector('title', text: g1.name) }
+
+    describe "pics" do
+      it { should have_content(p1.title) }
+      it { should have_content(p2.title) }
+      it { should have_content(g1.pics.count) }
+    end
+  end
+
   describe "signup page" do
     before { visit signup_path }
 

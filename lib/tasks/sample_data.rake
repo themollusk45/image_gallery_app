@@ -21,8 +21,14 @@ namespace :db do
 			title = Faker::Lorem.sentence(4)
 			description = Faker::Lorem.sentence(5)
 			users.each { |user| user.galleries.create!(title: title, description: description) }
-			#location = "alocation"
-			#users.each { |user| user.images.create!(title: title, description: description, location: location) }
 		end
+
+		users = User.all(limit:6)
+		5.times do
+			title = Faker::Lorem.sentence(3)
+			description = Faker::Lorem.sentence(2)
+			users.each { |user| user.pics.create!(title: title, description: description, gallery_id: user.galleries.first.id, pic_file: File.open(File.join(Rails.root,'app','assets','images', 'mugen.png'))) }
+		end
+
 	end
 end

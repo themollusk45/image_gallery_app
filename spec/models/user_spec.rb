@@ -30,6 +30,7 @@ describe User do
   it { should respond_to(:authenticate) }
   it { should respond_to(:galleries) }
   it { should respond_to(:feed) }
+  it { should respond_to(:pics) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -161,6 +162,22 @@ describe User do
       its(:feed) { should include(newer_gallery) }
       its(:feed) { should include(older_gallery) }
       #its(:feed) { should_not include(unfollowed_gallery) }  # do for part B
+    end
+  end
+
+  describe "pic associations" do
+    before { @user.save }
+    let!(:old_pic) do
+      FactoryGirl.create(:pic, user: @user, created_at: 1.day.ago)
+    end
+
+    it "should destroy associated pics" do
+      pics = @user.pics.dup
+      @user.destroy
+      pics.should_not be_empty
+      pics.each do |pic|
+        Pic.find_by_id(pic.id).should be_nil
+      end
     end
   end
 end

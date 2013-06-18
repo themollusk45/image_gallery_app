@@ -12,6 +12,7 @@ describe Gallery do
 	it { should respond_to(:description) }
 	it { should respond_to(:user_id) }
 	it { should respond_to(:user) }
+	it { should respond_to(:pics) }
 	its(:user) { should == user }
 	#it { should respond_to(:images) }
 

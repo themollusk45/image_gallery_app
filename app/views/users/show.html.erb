@@ -2,10 +2,20 @@
 <div class="row">
 	<aside class="span4">
 		<section>
+			<a href="<%= user_path(@user) %>">
+  				<%= gravatar_for @user, size: 52 %>
+			</a>
 			<h1>
-				<%= gravatar_for @user %>
-				<%= @user.name %>
+  				<%= @user.name %>
 			</h1>
+			<span> </br>
+  				
+			</span>
+			<span>
+				<%= pluralize(current_user.pics.count, "pic") %>
+  				<%= pluralize(current_user.galleries.count, "gallery") %>
+			</span>
+
 			<% if current_user?(@user) %>
 				<section class="new-gallery">
 					<%= render 'shared/gallery_form' %>
@@ -26,3 +36,4 @@
 		<% end %>
 	</div>
 </div>
+
