@@ -1,0 +1,17 @@
+<%= form_for(@comment) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<div class="field gallery-comment-form">
+		<%= f.text_area :content, placeholder: "Enter comment" %>
+
+		<% if @gallery.id %>
+			<%= f.hidden_field :gallery_id, :value => @gallery.id %>
+			
+		<% end %>
+		<% if @comment.id %>
+			<%= f.hidden_field :parent_id, :value => @comment.id %>
+			
+		<% end %>
+	</div>
+	galleryid <%= @gallery.id %>
+	<%= f.submit "Submit Comment", class: "btn btn-large btn-primary" %>
+<% end %>

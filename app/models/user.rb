@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :galleries, dependent: :destroy
   has_many :pics, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   #before_save { |user| user.name = name.downcase }
   before_save :create_remember_token

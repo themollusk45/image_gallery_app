@@ -8,6 +8,8 @@ class GalleriesController < ApplicationController
 		@gallery = Gallery.find(params[:id])
 		@galleries = @user.galleries
 		@pics = @gallery.pics
+		@comment = @user.comments.build if signed_in? # how to set gallery_id??
+		@comments = @gallery.comments#.first
 	end
 
 	def new
@@ -16,12 +18,17 @@ class GalleriesController < ApplicationController
 
 	def create
 		@gallery = current_user.galleries.build(params[:gallery])
-		if @gallery.save
-			flash[:success] = "Gallery created!"
-			redirect_to root_url
-		else
-			@feed_items = []
-			render 'static_pages/home'
+		#@galleries = current_user.galleries.all
+		respond_to do |format|
+			if @gallery.save
+				format.html {flash[:success] = "Gallery created!"
+					redirect_to root_url }
+				format.js
+			else
+				format.html { @feed_items = []
+					render 'static_pages/home' }
+				format.js
+			end
 		end
 	end
 

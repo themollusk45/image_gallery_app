@@ -15,19 +15,42 @@
 				</section>
 			<% end %>
 		</section>
+		
 	</aside>
-	<div class="span8">
-		<div class="gallery">
+	<div class="span8 middle">
+		<div id = "gallery_<%=@gallery.id%>" class="gallery">
 			<%= render @gallery %>
 		</div>
 		<div class="row">
 			<div class="all-pics">
-				<ul class="clearfix">
+				<row class="clearfix">
 					<%= render partial: 'shared/pic', collection: @pics %>
-				</ul>
+				</row>
+				<div> 
+					<%= link_to "comment", '#' %>
+					<%= render partial: 'shared/gallery-comment-form' %>
+			    </div>
 			</div>
 		</div>
 	</div>
+	<aside class="span4 right-aside">
+		<section>
+			<h1>
+				placeforcomments
+			</h1>
+			<span>
+				<%= pluralize(@gallery.comments.count, "comment") %>
+			</span>
+			<section>
+				<div class="gallery-comments">
+					    
+						<%= render partial: 'shared/comment', collection: @comments %>
+						
+				</div>
+			</section>
+		</section>
+		
+	</aside>
 
 	
 </div>

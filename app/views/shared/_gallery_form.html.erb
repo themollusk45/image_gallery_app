@@ -1,4 +1,4 @@
-<%= form_for(@gallery) do |f| %>
+<%= form_for(@gallery, :remote => true) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 	<div class="field">
 		<%= f.text_area :title, placeholder: "Title of new gallery" %>

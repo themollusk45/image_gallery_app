@@ -1,4 +1,4 @@
-<li class="span">
+<div class="span thumb">
 		<%= link_to image_tag(pic.pic_file.url(:thumb)), pic.pic_file.url, title: pic.title, rel:  'lightbox' %>
 		<p><%= truncate pic.title, :length => 17 %> </br>
 	<% if current_user?(pic.user) %>
@@ -8,4 +8,4 @@
 			title: pic.title %>
 	<% end %>
 		</p>
-</li>
+</div>

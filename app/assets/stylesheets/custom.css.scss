@@ -3,6 +3,10 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$mugenTan: #CDC05F;
+$darkerTan: #908641;
+$darkestTan: #534B10; /*for top navbar stuff */
+$reddish: #980505;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -12,6 +16,47 @@ $grayMediumLight: #eaeaea;
 
 /* universal */
 
+body {
+  background-color: $mugenTan;
+}
+.container {  
+  width: 1200px;
+}
+
+.span8{
+  width: 590px;
+  margin-left: 10px;
+}
+
+.span4{
+  width: 290px;
+  margin-left:10px;
+}
+
+.row {
+  margin: 0px;
+}
+
+.thumb {
+  margin-left: 10px;
+}
+
+.comment {
+  width: 270px;
+  margin-left: 10px;
+  border: 1px solid $darkerTan;
+}
+.comment-user{
+  border: 1px solid $darkerTan;
+  margin-top: 0px;
+  margin-bottom: 8px;
+}
+.comment-content{
+  border: 1px solid $darkerTan;
+}
+.comment-footer{
+  border: 1px solid $darkerTan;
+}
 html {
   overflow-y: scroll;
 }
@@ -65,6 +110,15 @@ p {
 
 /* header */
 
+.navbar-inverse .navbar-inner{ /*this was a serious pain in the ass to find and change */
+  background-color: $darkestTan; 
+  background-image: none;
+  background-repeat: no-repeat;
+  filter: none;
+}
+
+
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -86,7 +140,7 @@ p {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid $grayMediumLight;
+  border-top: 1px solid $reddish;
   color: $grayLight;
   a {
     color: $gray;
@@ -117,12 +171,12 @@ footer {
   @include box_sizing;
 }
 
-/* sidebar */
+/*  sidebar */
 
 aside {
   section {
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    border-top: 1px solid $reddish;
     &:first-child {
       border: 0;
       padding-top: 0;
@@ -142,6 +196,32 @@ aside {
   }
 }
 
+/* comments sidebar (right side) */
+ 
+
+.right-aside {  
+   section {
+      padding: 10px 0;
+      border-top: 1px solid $reddish;
+      &:first-child {
+        border: 0;
+        padding-top: 0;
+      }
+      span {
+        display: block;
+        margin-bottom: 3px;
+        line-height: 1;
+      }
+      h1 {
+        font-size: 1.4em;
+        text-align: left;
+        letter-spacing: -1px;
+        margin-bottom: 3px;
+        margin-top: 0px;
+      }
+    }
+}
+
 .gravatar {
   float: left;
   margin-right: 10px;
@@ -155,6 +235,16 @@ input, textarea, select, .uneditable-input {
   padding: 10px;
   margin-bottom: 15px;
   @include box-sizing;
+}
+
+.gallery-comment-form {
+
+  width: 300px;
+  height: 80px;
+  @include box-sizing;
+  textarea{
+    height: 60px;
+  }
 }
 
 input {
@@ -203,12 +293,14 @@ aside {
 }
 
 /* galleries */
-
-.galleries {
+.gallery {
+  border: 1px solid $reddish;
+}
+.galleries  {
   list-style: none;
   margin: 10px 0 0 0;
 
-  li{
+  div{
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
@@ -239,11 +331,12 @@ aside {
 
 .all-pics {
   display: block;
+  border: 1px solid #e8e8e8;
 
-  ul { 
+  row { 
     list-style: none;
 
-    li {
+    .span {
       display: inline;
 
       a {

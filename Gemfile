@@ -9,7 +9,9 @@ gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'paperclip', '~> 3.4.0'
-
+#gem 'awesome_nested_set'
+#gem 'acts_as_commentable_with_threading'
+gem 'acts_as_tree'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
@@ -28,7 +30,7 @@ group :assets do
   gem 'uglifier', '1.2.3'
 end
 
-gem 'jquery-rails', '2.0.2'
+gem 'jquery-rails', '~> 2.1'
 
 group :test do
   gem 'capybara', '1.1.2'

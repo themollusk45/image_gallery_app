@@ -4,6 +4,8 @@ class Pic < ActiveRecord::Base
   belongs_to :user
   belongs_to :gallery #double belongs to seems to work ok and seems appropriate... ?
 
+  has_many :comments
+
   validates :user_id, presence: true
   validates :title, length: { maximum: 100 }
   validates :description, length: { maximum: 1000 }
