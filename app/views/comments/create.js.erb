@@ -1,3 +1,3 @@
-$('.openbox').click(function(){
-    $(this).append("<%= render :partial => 'shared/gallery-comment-form'%>");
-});
+var old = $('.gallery-comments').html();
+$('.gallery-comments').html(old + '<%= escape_javascript(render(:partial => @comment))%>');
+$('#comment_content').val('');

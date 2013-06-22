@@ -1,13 +1,19 @@
 <% provide(:title, @gallery.title) %>
+
+<% content_for :javascript_includes do %>
+	<%= javascript_include_tag "pagination.js" %>
+<% end %>
+
 <div class="row">
 	<aside class="span4">
 		<section>
 			<h1>
-				<%= gravatar_for @user %>
-				<%= @user.name %>
+				<%= gravatar_for @gallery.user %>
+				<%= @gallery.user.name %>
 			</h1>
 			<span>
   				<%= pluralize(@gallery.pics.count, "pic") %>
+  				total pics: <%= @gallery.pics.count %>
 			</span>
 			<% if current_user?(@gallery.user) %>
 				<section class="new-pic">
@@ -26,7 +32,7 @@
 				<row class="clearfix">
 					<%= render partial: 'shared/pic', collection: @pics %>
 				</row>
-				<div> 
+				<div class="comment-form"> 
 					<%= link_to "comment", '#' %>
 					<%= render partial: 'shared/gallery-comment-form' %>
 			    </div>
@@ -38,14 +44,12 @@
 			<h1>
 				placeforcomments
 			</h1>
-			<span>
+			<span id="comment_count">
 				<%= pluralize(@gallery.comments.count, "comment") %>
 			</span>
 			<section>
 				<div class="gallery-comments">
-					    
-						<%= render partial: 'shared/comment', collection: @comments %>
-						
+						<%= render partial: 'shared/comment' %>
 				</div>
 			</section>
 		</section>

@@ -14,12 +14,17 @@ class PicsController < ApplicationController
 	def create
 		@user = current_user
 		@pic = current_user.pics.build(params[:pic])
-		
-		if @pic.save
-			flash[:success] = "Image saved!"
-			redirect_to :back
-		else
-			redirect_to :back
+		respond_to do |format|
+			if @pic.save
+				format.html { 
+					flash[:success] = "Image saved!"
+					redirect_to :back }
+				format.js
+			else
+				format.html {
+					redirect_to :back }
+				format.js
+			end
 		end
 	end
 

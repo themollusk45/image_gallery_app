@@ -1,0 +1,5 @@
+$("#users-galleries").html("<%= escape_javascript(render partial: "shared/gallery") %>");  
+$('.pagination').on("click", 'a', function () {
+	$.get(this.href, null, null, 'script');
+	return false;
+});

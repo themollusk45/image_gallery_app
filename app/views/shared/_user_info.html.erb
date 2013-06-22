@@ -8,5 +8,6 @@
   <%= link_to "view my profile", current_user %>
 </span>
 <span>
+  <%= pluralize(current_user.pics.count, "pic") %>
   <%= pluralize(current_user.galleries.count, "gallery") %>
 </span>

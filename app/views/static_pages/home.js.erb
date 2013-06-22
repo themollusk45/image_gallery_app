@@ -1,0 +1,5 @@
+$(".gallery-feed").html("<%= escape_javascript(render partial: "shared/feed") %>");  
+$('.pagination').on("click", 'a', function () {
+	$.get(this.href, null, null, 'script');
+	return false;
+});

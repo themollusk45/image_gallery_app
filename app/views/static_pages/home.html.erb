@@ -1,3 +1,7 @@
+<% content_for :javascript_includes do %>
+	<%= javascript_include_tag "pagination.js" %>
+<% end %>
+
 <% if signed_in? %>
 	<div class="row">
 		<aside class="span4">
@@ -13,7 +17,9 @@
 		</aside>
 		<div class="span8">
 			<h3>Gallery Feed</h3>
-			<%= render 'shared/feed' %>
+			<div class="gallery-feed">
+				<%= render 'shared/feed' %>
+			</div>
 		</div>
 	</div>
 <% else %>

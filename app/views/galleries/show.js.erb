@@ -1,0 +1,5 @@
+$(".gallery-comments").html("<%= escape_javascript(render partial: "shared/comment") %>");
+$('.pagination').on("click", 'a', function () {
+	$.get(this.href, null, null, 'script');
+	return false;
+});

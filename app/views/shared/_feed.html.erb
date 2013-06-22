@@ -1,6 +1,7 @@
-<% if @feed_items.any? %>
+<% if @galleries.any? %>
+
 	<div class="galleries">
-		<%= render partial: 'shared/gallery', collection: @feed_items %>
+		<%= render partial: 'shared/gallery' %>
 	</div>
-	<%= will_paginate @feed_items %>
+	
 <% end %>

@@ -1,2 +1,4 @@
 var old = $('.galleries').html();
 $('.galleries').html('<%= escape_javascript(render(:partial => @gallery))%>' + old);
+$('#gallery_title').val('');
+$('#gallery_description').val('');

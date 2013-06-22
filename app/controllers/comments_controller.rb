@@ -9,15 +9,11 @@ class CommentsController < ApplicationController
 
 	def new
 		@comment = Comment.new
-		respond_to do |format|
-			format.js
-		end
 	end
-
 
 	def create
 		@user = current_user
-		#@gallery = Gallery.find(params[:id]) || nil
+		#@gallery = Gallery.find(params[:id])
 		@comment = current_user.comments.build(params[:comment])
 			respond_to do |format|
 			if @comment.save
@@ -37,10 +33,10 @@ class CommentsController < ApplicationController
 		#@comments = current_user.comments
 	end
 
-	#def index#all current users images, is this useful??? will have edit/delete for each so I guess so
-	#	@user = current_user
-	#	@pics = @user.pics.paginate(page: params[:page])
-	#end
+	def index#all current users images, is this useful??? will have edit/delete for each so I guess so
+		@user = current_user
+		@pics = @user.comments.paginate(page: params[:page])
+	end
 
 	def update
 		if @comment.update_attributes(params[:comment])

@@ -3,6 +3,7 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$lightTan: #BCB04E;
 $mugenTan: #CDC05F;
 $darkerTan: #908641;
 $darkestTan: #534B10; /*for top navbar stuff */
@@ -276,18 +277,42 @@ aside {
   }
 }
 
+/* pagination buttons and such */
+.pagination{
+  margin: 0px;
+  height: 50px;
+  a{
+    background-color: $mugenTan;
+    border: 1px solid $darkestTan;
+    color: $lightTan;
+    &:hover{
+       background-color: $lightTan;
+    }
+  }
+  .active{
+    a{
+      background-color: $darkerTan;
+      color: $reddish;
+    }
+  }
+  .disabled{
+    a{
+      color: $lightTan;
+      }
+  }
+}
 
 /* users index */
 
 .users {
   list-style: none;
   margin: 0;
-  li {
+  div {
     overflow: auto;
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    border-top: 1px solid $darkerTan;
     &:last-child {
-      border-bottom: 1px solid $grayLighter;
+      border-bottom: 1px solid $darkerTan;
     }
   }
 }
@@ -306,6 +331,12 @@ aside {
   }
 }
 
+.comment-form{
+  border-top: 1px solid #e8e8e8;
+}
+.gallery-comment-form{
+  padding-left: 20px;
+}
 .gallerytitle{
   display: block;
   font-size: 1.3em;  

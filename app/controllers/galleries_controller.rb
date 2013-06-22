@@ -4,12 +4,14 @@ class GalleriesController < ApplicationController
 
 	def show #show specific gallery...
 		@user = current_user
-		@pic = current_user.pics.build if signed_in?
+		if signed_in?
+			@pic = current_user.pics.build(params[:pic]) 
+			@comment = @user.comments.build(params[:comment])
+		end
 		@gallery = Gallery.find(params[:id])
 		@galleries = @user.galleries
 		@pics = @gallery.pics
-		@comment = @user.comments.build if signed_in? # how to set gallery_id??
-		@comments = @gallery.comments#.first
+		@comments = @gallery.comments.paginate(page: params[:page], :per_page =>  10)
 	end
 
 	def new

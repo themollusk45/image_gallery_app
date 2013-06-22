@@ -1,0 +1,5 @@
+$(".users").html("<%= escape_javascript(render 'user') %>");  
+$('.pagination').on("click", 'a', function () {
+	$.get(this.href, null, null, 'script');
+	return false;
+});

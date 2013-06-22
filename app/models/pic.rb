@@ -9,6 +9,7 @@ class Pic < ActiveRecord::Base
   validates :user_id, presence: true
   validates :title, length: { maximum: 100 }
   validates :description, length: { maximum: 1000 }
+  validates :pic_file, presence: true
 
   has_attached_file :pic_file, styles: {
   	thumb: '100x100>',

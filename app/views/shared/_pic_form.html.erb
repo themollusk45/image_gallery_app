@@ -1,4 +1,4 @@
-<%= form_for @pic, :html => { :multipart => true } do |f| %>
+<%= form_for @pic, :remote => true, :html => { :multipart => true } do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 	<div class="field">
 		
@@ -8,7 +8,6 @@
 		
 		<% if @gallery.id %>
 			<%= f.hidden_field :gallery_id, :value => @gallery.id %>
-			<% @pic.update_attributes(params[gallery_id=@gallery.id]) %>
 		<% else %>
 			<%= f.label "Choose a gallery" %>
  			<%= f.collection_select :gallery_id, @galleries, :id, :title, :include_blank => "Nothing selected" %>
