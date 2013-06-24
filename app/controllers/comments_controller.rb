@@ -48,8 +48,12 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-		@comment.destroy
-		redirect_to :back
+		@comment = Comment.find(params[:id])
+		if @comment.destroy
+			render :json => @comment, :status => :ok
+		else
+			render :js => "alert('error deleting comment');" #cahnge this
+		end
 	end
 
 	

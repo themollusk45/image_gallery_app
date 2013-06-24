@@ -1,6 +1,6 @@
 <%= will_paginate @galleries %>
 <% @galleries.each do |gallery| %>
-	<div id = "gallery_<%=gallery.id%>" >
+	<div id = "gallery_<%=gallery.id%>" class="gallery" >
 		<span class="gallerytitle"><%= link_to gallery.title, gallery %></span>
 		<span class="gallerydescription"><%= gallery.description %></span>
 		<span class="timestamp">
@@ -9,9 +9,12 @@
 		</span>
 		<% if current_user?(gallery.user) %>
 			<%= link_to "edit", edit_gallery_path(gallery.id) %>
-			<%= link_to "delete", gallery, method: :delete,
-											data: { confirm: "You sure?" },
-											title: gallery.title %>
+			
+			<%= link_to 'X', gallery_path(gallery), :method => :delete, 
+											:remote => true, 
+											:confirm => "are you sure?", 
+											:disable_with => "X", 
+											:class => 'close' %>
 		<% end %>
 		<% if signed_in? %>
 			<%#= link_to "comment", '#' %>

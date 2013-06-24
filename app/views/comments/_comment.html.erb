@@ -1,31 +1,40 @@
-<div id="comment_<%= comment.id %>" class="span comment">
-		<h3 class="comment-user"><%= comment.user.name %></h3>
-		<div class="comment-content"><%= comment.content %></div>
-		<%= render :partial => 'shared/comment', :collection => comment.children %>
-		
-		<div class="comment-footer">
-			<%= comment.rating %>
-			cid <%= comment.id %>
-			gid <%= comment.gallery_id %>
-			pid <%= comment.parent_id %>
-			<% if current_user?(comment.user) %>
-				<%= link_to "edit", edit_comment_path(comment.id) %>
-				<%= link_to "delete", comment, method: :delete,
-				data: { confirm: "You sure?" },
-				title: "delete comment?" %>
-				<%#= link_to 'delete', comment, 
-							data: { :confirm => 'Remove comment?',
-								    :title => 'really delete? '},
-							 :method => :comments_delete, 
-							:remote =>true, :class=>'delete_comment' %>
-			<% end %>
-			<% if signed_in? %>
-				<div id='openform'>
-					<%= link_to "comment", '#', :id =>'openbox', :remote => true %>
-				</div>
-			<% end %>
-		</div>
-		
 
-		
-</div>
+
+	<div id="comment_<%= comment.id %>" class="span comment">
+			<h3 class="comment-user"><%= comment.user.name %></h3>
+			<div class="comment-content"><%= comment.content %></div>
+			<%= render :partial => 'shared/comment', :collection => comment.children %>
+			
+			<div class="comment-footer">
+				<%= comment.rating %>
+				cid <%= comment.id %>
+				gid <%= comment.gallery_id %>
+				pid <%= comment.parent_id %>
+				rating <%= comment.rating %>
+				<% if current_user?(comment.user) %>
+			</br>
+					<%= link_to "edit", edit_comment_path(comment.id) %>
+					<%#= link_to "delete", comment, method: :delete,
+					data: { confirm: "You sure?" },
+					title: "delete comment?" %>
+					<%#= link_to 'delete', comment, 
+								data: { :confirm => 'Remove comment?',
+									    :title => 'really delete? '},
+								 :method => :comments_delete, 
+								:remote =>true, :class=>'delete_comment' %>
+					<%= link_to 'X', comment_path(comment), :method => :delete, 
+															:remote => true, 
+															:confirm => "are you sure?", 
+															:disable_with => "X", 
+															:class => 'close' %>
+					
+				<% end %>
+				<% if signed_in? %>
+					<div id='openform'>
+						<%#= link_to "Comment", '#', :id =>'openbox', :remote => true %>
+						<%= link_to "Like", '#' %>
+					</div>
+				<% end %>
+			</div>		
+	</div>
+

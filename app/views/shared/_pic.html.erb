@@ -3,9 +3,11 @@
 		<p><%= truncate pic.title, :length => 17 %> </br>
 	<% if current_user?(pic.user) %>
 			<%= link_to "edit", edit_pic_path(pic.id) %>
-			<%= link_to "delete", pic, method: :delete,
-			data: { confirm: "You sure?" },
-			title: pic.title %>
+			<%= link_to 'X', pic_path(pic.id), :method => :delete, 
+			:remote => true, 
+			:confirm => "are you sure?", 
+			:disable_with => "X", 
+			:class => 'close' %>
 	<% end %>
 		</p>
 </div>

@@ -48,6 +48,7 @@
 				<%= pluralize(@gallery.comments.count, "comment") %>
 			</span>
 			<section>
+				<%= will_paginate @comments %>
 				<div class="gallery-comments">
 						<%= render partial: 'shared/comment' %>
 				</div>

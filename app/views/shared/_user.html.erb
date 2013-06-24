@@ -1,0 +1,13 @@
+<%= will_paginate @galleries %>
+<div>
+	<span><%= gravatar_for user, size: 52 %></span>
+	<span><%= link_to user.name, user %></span>
+	</br>
+	<% if current_user.admin? && !current_user?(user) %>
+		| <%= link_to "delete", user, method: :delete,
+									  data: { confirm: "You sure?" } %>
+	<% end %>
+	<span><%= pluralize(user.galleries.count, "gallery") %></span>
+	<span><%=	pluralize(user.pics.count, "image") %></span>
+</div>
+<%= will_paginate @galleries %>

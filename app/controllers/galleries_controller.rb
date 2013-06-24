@@ -52,11 +52,13 @@ class GalleriesController < ApplicationController
 	end
 
 	def destroy
-		@gallery.destroy
-		redirect_to root_url
+		@gallery = Gallery.find(params[:id])
+		if @gallery.destroy
+			render :json => @gallery, :status => :ok
+		else
+			render :js => "alert('error deleting gallery');"
+		end
 	end
-
-	
 
 	private
 

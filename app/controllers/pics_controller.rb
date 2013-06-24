@@ -47,8 +47,12 @@ class PicsController < ApplicationController
 	end
 
 	def destroy
-		@pic.destroy
-		redirect_to :back
+		@pic = Pic.find(params[:id])
+		if @pic.destroy
+			render :json => @pic, :status => :ok
+		else
+			render :js => "alert('error deleting image');"
+		end
 	end
 
 	

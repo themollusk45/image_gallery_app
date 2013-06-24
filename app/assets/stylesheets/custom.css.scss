@@ -43,8 +43,8 @@ body {
 }
 
 .comment {
-  width: 270px;
-  margin-left: 10px;
+  width: 260px;
+  margin-left: 9px;
   border: 1px solid $darkerTan;
 }
 .comment-user{
@@ -280,11 +280,13 @@ aside {
 /* pagination buttons and such */
 .pagination{
   margin: 0px;
-  height: 50px;
+  height: 30px;
   a{
     background-color: $mugenTan;
     border: 1px solid $darkestTan;
     color: $lightTan;
+    padding: 0 5px;
+    line-height: 23px;
     &:hover{
        background-color: $lightTan;
     }
@@ -334,9 +336,15 @@ aside {
 .comment-form{
   border-top: 1px solid #e8e8e8;
 }
+
 .gallery-comment-form{
   padding-left: 20px;
 }
+
+.gallery-comments{
+  line-height: 15px;
+}
+
 .gallerytitle{
   display: block;
   font-size: 1.3em;  
