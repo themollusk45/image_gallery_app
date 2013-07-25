@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
 		@user = current_user
 		#@gallery = Gallery.find(params[:id])
 		@comment = current_user.comments.build(params[:comment])
-			respond_to do |format|
+		respond_to do |format|
 			if @comment.save
 				format.html {
 					flash[:success] = "comment saved!"
@@ -48,12 +48,26 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
+		#@comment = Comment.find(params[:id])
+		#if @comment.destroy
+		#	render :json => @comment, :status => :ok
+		#else
+		#	render :js => "alert('error deleting comment');" #cahnge this
+		#end
+
 		@comment = Comment.find(params[:id])
-		if @comment.destroy
-			render :json => @comment, :status => :ok
-		else
-			render :js => "alert('error deleting comment');" #cahnge this
-		end
+		respond_to do |format|
+			if @comment.destroy
+				format.html {
+					flash[:success] = "comment deleted!"
+					redirect_to :back }
+				format.js
+			else
+				format.html {
+					redirect_to :back }
+				format.js
+				end
+			end
 	end
 
 	

@@ -4,8 +4,10 @@ class Comment < ActiveRecord::Base
   belongs_to :pic
   belongs_to :gallery
   belongs_to :parent, :class_name => 'Comment', :foreign_key => "parent_id"
-  has_many :children, :class_name => 'Comment', :foreign_key => "parent_id"
-  acts_as_tree :order => "created_at"
+  has_many :children, :class_name => 'Comment', :foreign_key => "parent_id" #not currently used
+  has_many :likes
+  acts_as_tree :order => "created_at" #not currently used
+
 
   
 end

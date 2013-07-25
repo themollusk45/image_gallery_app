@@ -7,6 +7,7 @@ class GalleriesController < ApplicationController
 		if signed_in?
 			@pic = current_user.pics.build(params[:pic]) 
 			@comment = @user.comments.build(params[:comment])
+			@comment_like = CommentLike.new(params[:comment_like])
 		end
 		@gallery = Gallery.find(params[:id])
 		@galleries = @user.galleries

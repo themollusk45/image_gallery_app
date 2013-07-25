@@ -6,11 +6,11 @@
 			<%= render :partial => 'shared/comment', :collection => comment.children %>
 			
 			<div class="comment-footer">
-				<%= comment.rating %>
+				
 				cid <%= comment.id %>
 				gid <%= comment.gallery_id %>
 				pid <%= comment.parent_id %>
-				rating <%= comment.rating %>
+				
 				<% if current_user?(comment.user) %>
 			</br>
 					<%= link_to "edit", edit_comment_path(comment.id) %>
@@ -26,7 +26,7 @@
 															:remote => true, 
 															:confirm => "are you sure?", 
 															:disable_with => "X", 
-															:class => 'close' %>
+															:class => 'delete_comment' %>
 					
 				<% end %>
 				<% if signed_in? %>

@@ -1,1 +1,17 @@
-$('.gallery-comments').html("<%= escape_javascript(render partial: "shared/comment") %>" );
+jQuery(document).on("ajax:beforeSend", ".delete_comment", function (){
+				 alert('beforesend');
+				 $(this).fadeTo('fast', 0.5));
+				 return false;
+});
+
+$('.comment').on("ajax:success", ".delete_comment", function (){
+				alert('success');
+				$(this).hide('fast'));
+				return false;
+});
+
+$('.comment').on("ajax:error", ".delete_comment", function (){
+				alert('error');
+				$(this).fadeTo('fast',1));
+				return false;
+});

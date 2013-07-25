@@ -1,0 +1,6 @@
+<%= form_for(@comment_like, :remote => true) do |f| %>
+	<%= f.hidden_field "comment_id", :value => @comment.id %>
+	<%= f.hidden_field "user_id", :value => @user.id %>
+	<%= image_submit_tag "buttons/vote-for-item.png" %>
+<% end %>
+ 

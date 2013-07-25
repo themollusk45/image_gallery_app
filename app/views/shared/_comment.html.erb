@@ -6,11 +6,11 @@
 			<%= render :partial => 'shared/comment', :collection => comment.children %>
 			
 			<div class="comment-footer">
-				<%= comment.rating %>
+				
 				cid <%= comment.id %>
 				gid <%= comment.gallery_id %>
 				pid <%= comment.parent_id %>
-				rating <%= comment.rating %>
+				
 				<% if current_user?(comment.user) %>
 			</br>
 					<%= link_to "edit", edit_comment_path(comment.id) %>
@@ -32,7 +32,17 @@
 				<% if signed_in? %>
 					<div id='openform'>
 						<%#= link_to "Comment", '#', :id =>'openbox', :remote => true %>
-						<%= link_to "Like", '#' %>
+						<%#= render :partial => 'shared/comment_like_form' %>
+						<div id ="like-button-spot">
+							<%= form_for(@comment_like, :remote => true, :html => { :class =>
+																				'comment_like_form' }) do |f| %>
+								<%= f.hidden_field "comment_id", :value => comment.id %>
+								<%= f.hidden_field "user_id", :value => @user.id %>
+								<%= image_submit_tag "like.png" %>
+							<% end %>
+						</div>
+ 
+ 
 					</div>
 				<% end %>
 			</div>		

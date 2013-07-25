@@ -1,4 +1,7 @@
 ImageGalleryApp::Application.routes.draw do
+  resources :comment_likes
+
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :galleries #create and destroy via Users, rest via Galleries?
